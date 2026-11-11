@@ -38,7 +38,7 @@ Run the dataset scripts from the repository root. For instance:
 ```bash
 bash scripts/MAPF/etth1.sh
 nohup bash scripts/MAPF/etth1.sh > etth1.log 2>&1 &
-bash scripts/MAPF/weather/weather.sh
+bash scripts/MAPF/weather.sh
 nohup bash scripts/MAPF/weather.sh > weather.log 2>&1 &
 ```
 
