@@ -36,7 +36,7 @@ if __name__ == '__main__':
     parser.add_argument('--dropout', type=float, default=0.05, help='dropout')
 
     # trend
-    parser.add_argument('--trend_scales', type=str, default='13,25,49,97,169', help='multi-scale moving-average kernels for adaptive trend')
+    parser.add_argument('--trend_scales', type=str, default='49,169', help='multi-scale moving-average kernels for adaptive trend')
     parser.add_argument('--trend_router_hidden', type=int, default=32, help='hidden width of adaptive trend router')
     parser.add_argument('--trend_residual_detach', type=int, default=0, help='1: stop gradients through the trend estimate when forming the residual; 0: allow gradients')
 
@@ -48,8 +48,8 @@ if __name__ == '__main__':
     parser.add_argument('--wavelet_output_scale_init', type=float, default=1.0, help='initial output scale of wavelet residual branch')
 
     # harmonic
-    parser.add_argument('--periods', type=str, default='24,168,12,48', help='periods in sampling steps, e.g. "24,168"')
-    parser.add_argument('--seasonal_orders', type=str, default='6,4,3,3', help='harmonic orders for each period')
+    parser.add_argument('--periods', type=str, default='24,168', help='periods in sampling steps, e.g. "24,168"')
+    parser.add_argument('--seasonal_orders', type=str, default='8,1', help='harmonic orders for each period')
     parser.add_argument('--seasonal_ridge', type=float, default=0.01, help='ridge regularization strength for harmonic fitting')
     parser.add_argument('--seasonal_gate_hidden', type=int, default=16, help='seasonal reliability gate hidden width')
     parser.add_argument('--seasonal_gate_bias', type=float, default=0, help='initial seasonal gate bias; negative is conservative')
@@ -169,6 +169,6 @@ if __name__ == '__main__':
         ii = 0
         setting = make_setting(ii)
         exp = Exp(args)
-        print('>>>>>>>testing : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'.format(setting))
+        print('>>>>>>>testing : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'.format(setting))
         exp.test(setting, test=1)
         torch.cuda.empty_cache()
