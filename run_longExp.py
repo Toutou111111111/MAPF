@@ -38,7 +38,7 @@ if __name__ == '__main__':
     # trend
     parser.add_argument('--trend_scales', type=str, default='13,25,49,97,169', help='multi-scale moving-average kernels for adaptive trend')
     parser.add_argument('--trend_router_hidden', type=int, default=32, help='hidden width of adaptive trend router')
-    parser.add_argument('--trend_residual_detach', type=int, default=1, help='1: stop gradients through the trend estimate when forming the residual; 0: allow gradients')
+    parser.add_argument('--trend_residual_detach', type=int, default=0, help='1: stop gradients through the trend estimate when forming the residual; 0: allow gradients')
 
     # Morlet-like wavelet
     parser.add_argument('--wavelet_scales', type=str, default='1,2,4,8', help='scales of the Morlet-like filters')
@@ -52,13 +52,13 @@ if __name__ == '__main__':
     parser.add_argument('--seasonal_orders', type=str, default='6,4,3,3', help='harmonic orders for each period')
     parser.add_argument('--seasonal_ridge', type=float, default=0.01, help='ridge regularization strength for harmonic fitting')
     parser.add_argument('--seasonal_gate_hidden', type=int, default=16, help='seasonal reliability gate hidden width')
-    parser.add_argument('--seasonal_gate_bias', type=float, default=-2.0, help='initial seasonal gate bias; negative is conservative')
+    parser.add_argument('--seasonal_gate_bias', type=float, default=0, help='initial seasonal gate bias; negative is conservative')
     parser.add_argument('--seasonal_scale_init', type=float, default=1.0, help='initial seasonal output scale')
 
     # gates
     parser.add_argument('--fusion_gate', type=int, default=1, help='1: weight each path with an independent 2*sigmoid gate; 0: add path forecasts directly')
     parser.add_argument('--fusion_gate_hidden', type=int, default=32, help='hidden width of branch fusion gate')
-    parser.add_argument('--horizon_gate', type=int, default=0, help='1: use separate path gates for each prediction step and variable; 0: share gates across prediction steps')
+    parser.add_argument('--horizon_gate', type=int, default=1, help='1: use separate path gates for each prediction step and variable; 0: share gates across prediction steps')
     parser.add_argument('--horizon_gate_dim', type=int, default=8, help='horizon embedding dimension for horizon-aware fusion gate')
 
     # ablations
