@@ -1,0 +1,12 @@
+.idea/
+.venv/
+__pycache__/
+*.pyc
+data/
+checkpoints/
+results/
+test_results/
+logs/
+result.txt
+*.log
+.env
